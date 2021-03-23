@@ -1,0 +1,2 @@
+core features to implement
+1. change of control 
