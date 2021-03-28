@@ -25,5 +25,17 @@ namespace Platformer.UI
         {
             SetActivePanel(0);
         }
+
+        public void LoadMenu()
+        {
+            Time.timeScale = 1f;
+            //SceneManager.LoadScene(StartScreen);
+        }
+
+
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
     }
 }
