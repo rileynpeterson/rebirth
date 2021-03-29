@@ -6,7 +6,7 @@ public class TutorialManager : MonoBehaviour {
 
     public GameObject[] popUps;
     private int popUpIndex;
-    public float waitTime = 10f;
+    public float waitTime = 630f;
     public PlatformerCharacter2D player;
     public GameObject continueScreen;
     // Update is called once per frame
@@ -14,6 +14,11 @@ public class TutorialManager : MonoBehaviour {
     void Start()
     {
         player.ChangeJump(0);
+        continueScreen.SetActive(false);
+        for (int i = 0; i < popUps.Length; i++)
+        {
+            popUps[i].SetActive(false);
+        }
     }
     void Update()
     {
@@ -21,43 +26,43 @@ public class TutorialManager : MonoBehaviour {
         {
             if (i == popUpIndex)
             {
-                popUps[popUpIndex].SetActive(true);
+                popUps[i].SetActive(true);
             }
             else
             {
-                popUps[popUpIndex].SetActive(false);
+                popUps[i].SetActive(false);
             }
         }
-        if(popUpIndex == 0)
+        if (popUpIndex == 0)
         {
-            if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
             {
                 popUpIndex++;
             }
-            else if(popUpIndex == 1)
+        }
+        else if (popUpIndex == 1)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    player.ChangeJump(400f);
-                    popUpIndex++;
-                }
+                player.ChangeJump(700f);
+                popUpIndex++;
             }
-            else if(popUpIndex == 2)
+        }
+        else if (popUpIndex == 2)
+        {
+            if (waitTime <= 0)
             {
-                if (waitTime <= 0)
-                {
-                    popUpIndex++;
-                }
-                else
-                {
-                    waitTime -= Time.deltaTime;
-                }
-              
+                popUpIndex++;
             }
-            else if (popUpIndex == 3)
+            else
             {
-                continueScreen.SetActive(true);
+                waitTime -= Time.deltaTime;
             }
+
+        }
+        else if (popUpIndex == 3)
+        {
+            continueScreen.SetActive(true);
         }
         
         if (player.IsDead() == true)
@@ -69,6 +74,7 @@ public class TutorialManager : MonoBehaviour {
 
     public void RestartTutorial()
     {
-
+        popUpIndex = 0;
+       
     }
 }

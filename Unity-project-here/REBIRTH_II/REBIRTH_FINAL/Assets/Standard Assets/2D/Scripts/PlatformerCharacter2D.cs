@@ -2,8 +2,7 @@ using System;
 using UnityEngine;
 
 #pragma warning disable 649
-namespace UnityStandardAssets._2D
-{
+
     public class PlatformerCharacter2D : MonoBehaviour
     {
         [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
@@ -20,7 +19,7 @@ namespace UnityStandardAssets._2D
         private Animator m_Anim;            // Reference to the player's animator component.
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-
+        
         private void Awake()
         {
             // Setting up references.
@@ -112,9 +111,31 @@ namespace UnityStandardAssets._2D
             transform.localScale = theScale;
         }
 
-        public void ChangeJump(float jump)
+        public void ChangeJump(float j)
         {
-            m_JumpForce = jump;
+            m_JumpForce = j;
         }
+        
+        public bool IsDead()
+      {
+        float waitTime = 2f;
+        if (m_Grounded == false)
+        {
+            waitTime -= Time.deltaTime;
+            if (waitTime == 0 && m_Grounded == false)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+      }
+     
     }
-}
+
