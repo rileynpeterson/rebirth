@@ -40,8 +40,17 @@ namespace Platformer.Mechanics
         internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
+        public GameObject keyinv;
+        public GameObject mapinv;
+
         public Bounds Bounds => collider2d.bounds;
 
+        void Start()
+        {
+            keyinv.SetActive(false);
+            mapinv.SetActive(false);
+
+        }
         void Awake()
         {
             health = GetComponent<Health>();
@@ -136,6 +145,21 @@ namespace Platformer.Mechanics
             Jumping,
             InFlight,
             Landed
+        }
+
+         void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.tag =="PickUpKey")
+            {
+                other.gameObject.SetActive(false);
+                keyinv.SetActive(true);
+            }
+            
+            if(other.gameObject.tag == "PickUpMap")
+            {
+                other.gameObject.SetActive(false);
+                mapinv.SetActive(true);
+            }
         }
     }
 }
