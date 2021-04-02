@@ -45,7 +45,7 @@ namespace Platformer.Mechanics
 
         public Bounds Bounds => collider2d.bounds;
 
-        void Start()
+        protected override void Start()
         {
             keyinv.SetActive(false);
             mapinv.SetActive(false);
