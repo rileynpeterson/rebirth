@@ -23,12 +23,12 @@ public class GameHandler : MonoBehaviour {
       public GameObject coinText;
 
       void Start(){
-            InventoryMenu.SetActive(true);
+           InventoryMenu.SetActive(true);
             item1image.SetActive(false);
-            item2image.SetActive(false);
-            item3image.SetActive(false);
-            item4image.SetActive(false);
-            item5image.SetActive(false);
+            //item2image.SetActive(false);
+           // item3image.SetActive(false);
+            //item4image.SetActive(false);
+            //item5image.SetActive(false);
             InventoryDisplay();
       }
 

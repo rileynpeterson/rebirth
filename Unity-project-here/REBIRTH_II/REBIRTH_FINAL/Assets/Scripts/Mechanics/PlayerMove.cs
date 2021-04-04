@@ -21,7 +21,7 @@ public class PlayerMove : MonoBehaviour {
 	private void Turn()
 	{
 		// Switch player facing label
-		FaceRight = FaceRight;
+		FaceRight = !FaceRight;
 
 		// Multiply player's x local scale by -1.
 		Vector3 theScale = transform.localScale;
