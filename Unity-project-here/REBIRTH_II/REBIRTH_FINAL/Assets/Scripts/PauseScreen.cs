@@ -6,6 +6,10 @@ public class PauseScreen : MonoBehaviour
 {
     public static bool IsPaused = false;
     public GameObject pauseMenuUI;
+    void Start()
+    {
+        pauseMenuUI.SetActive(false);
+    }
     void Update()
     {
         //checks if the player presses "x" which should bring up the menu screen by setting that game object to true. 
