@@ -8,9 +8,24 @@ public class PlayerControlAnimated : MonoBehaviour {
       public string axisName = "Horizontal";
       public float jump = 1;
       public Animator anim;
+      public Collider2D collider2d;
+
+      public GameObject keyinv;
+      public GameObject mapinv;
+
+      public Bounds Bounds => collider2d.bounds;
+
+     /* protected override void Start()
+      {
+            
+
+
+      }*/
 
 
       void Start () {
+            keyinv.SetActive(false);
+            mapinv.SetActive(false);
             anim = gameObject.GetComponent<Animator> ();
       }
 
@@ -42,6 +57,21 @@ public class PlayerControlAnimated : MonoBehaviour {
                   newScale.x = 1.0f;
                   transform.localScale = newScale;
             }
+
+             void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.tag =="PickUpKey")
+            {
+                other.gameObject.SetActive(false);
+                keyinv.SetActive(true);
+            }
+            
+            if(other.gameObject.tag == "PickUpMap")
+            {
+                other.gameObject.SetActive(false);
+                mapinv.SetActive(true);
+            }
+        }
 
 
             
