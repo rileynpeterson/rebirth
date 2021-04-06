@@ -9,9 +9,14 @@ public class ReversedPlayerControlAnimated : MonoBehaviour {
       public float jump = 1;
       public Animator anim;
 
-      void Start () {
+    public GameObject keyinv;
+    public GameObject mapinv;
+
+    void Start () {
             anim = gameObject.GetComponent<Animator> ();
-      }
+        keyinv.SetActive(false);
+        mapinv.SetActive(false);
+    }
 
       void Update () {
             //movement code
@@ -42,4 +47,18 @@ public class ReversedPlayerControlAnimated : MonoBehaviour {
                   transform.localScale = newScale;
             }
       }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "PickUpKey")
+        {
+            other.gameObject.SetActive(false);
+            keyinv.SetActive(true);
+        }
+
+        if (other.gameObject.tag == "PickUpMap")
+        {
+            other.gameObject.SetActive(false);
+            mapinv.SetActive(true);
+        }
+    }
 }
