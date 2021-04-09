@@ -24,22 +24,22 @@ public class PlayerControlAnimated : MonoBehaviour {
 
 
       void Start () {
-            keyinv.SetActive(false);
-            mapinv.SetActive(false);
+            //keyinv.SetActive(false);
+           // mapinv.SetActive(false);
             anim = gameObject.GetComponent<Animator> ();
       }
 
       void Update () {
             //movement code
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) {
-                  transform.position += transform.right * Input.GetAxis(axisName)* speed;
+                  transform.position += (transform.right * Input.GetAxis(axisName)* speed) * Time.deltaTime;
                   anim.SetBool("walk", true); }
             else { anim.SetBool("walk", false); }
 
             //jump code
             if (Input.GetKey(KeyCode.UpArrow)){
                   Vector3 position = this.transform.position;
-                  position.y += jump / 4;
+                  position.y += (jump / 4) * Time.deltaTime;
                   this.transform.position = position;
                   anim.SetTrigger("jump");
             }
@@ -49,16 +49,16 @@ public class PlayerControlAnimated : MonoBehaviour {
             //flip character based on movement direction
             if (Input.GetAxis (axisName) < 0){
                   Vector3 newScale = transform.localScale;
-                  newScale.x = -1.0f;
+                  newScale.x = -1.5f;
                   transform.localScale = newScale;
             }
             else if (Input.GetAxis (axisName) > 0){
                   Vector3 newScale =transform.localScale;
-                  newScale.x = 1.0f;
+                  newScale.x = 1.5f;
                   transform.localScale = newScale;
             }
 
-             void OnTriggerEnter2D(Collider2D other)
+           /*  void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.tag =="PickUpKey")
             {
@@ -71,7 +71,7 @@ public class PlayerControlAnimated : MonoBehaviour {
                 other.gameObject.SetActive(false);
                 mapinv.SetActive(true);
             }
-        }
+        }*/
 
 
             

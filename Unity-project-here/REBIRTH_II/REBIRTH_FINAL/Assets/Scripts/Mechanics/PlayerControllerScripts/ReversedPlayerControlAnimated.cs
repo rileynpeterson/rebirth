@@ -16,14 +16,14 @@ public class ReversedPlayerControlAnimated : MonoBehaviour {
       void Update () {
             //movement code
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)) {
-                  transform.position -= transform.right * Input.GetAxis(axisName)* speed;
+                  transform.position -= (transform.right * Input.GetAxis(axisName)* speed) * Time.deltaTime;
                   anim.SetBool("walk", true);}
             else { anim.SetBool("walk", false);}
 
             //jump code
             if (Input.GetKey(KeyCode.DownArrow)){
                   Vector3 position = this.transform.position;
-                  position.y += jump / 4;
+                  position.y += (jump / 4) * Time.deltaTime;
                   this.transform.position = position;
                   anim.SetTrigger("jump");
             }
@@ -33,12 +33,12 @@ public class ReversedPlayerControlAnimated : MonoBehaviour {
             //flip character based on movement direction
             if (Input.GetAxis (axisName) < 0){
                   Vector3 newScale = transform.localScale;
-                  newScale.x = 1.0f;
+                  newScale.x = 1.5f;
                   transform.localScale = newScale;
             }
             else if (Input.GetAxis (axisName) > 0){
                   Vector3 newScale =transform.localScale;
-                  newScale.x = -1.0f;
+                  newScale.x = -1.5f;
                   transform.localScale = newScale;
             }
       }
