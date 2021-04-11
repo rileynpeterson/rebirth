@@ -58,26 +58,28 @@ namespace Platformer.Mechanics
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+
         }
 
         protected override void Update()
         {
+
             if (controlEnabled)
             {
                 move.x = Input.GetAxis("Horizontal");
-                animator.SetBool("run", true);
+                
 
                 if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
                 {
-                    animator.SetBool("run", false);
+                    animator.SetBool("running", false);
                     animator.SetTrigger("takeoff");
-                    animator.SetBool("jump", true);
+                 
                     jumpState = JumpState.PrepareToJump;
                 }
 
                 else if (Input.GetButtonUp("Jump"))
                 {
-
+                    
                     stopJump = true;
                     Schedule<PlayerStopJump>().player = this;
                 }
@@ -85,6 +87,7 @@ namespace Platformer.Mechanics
             else
             {
                 move.x = 0;
+               
             }
             UpdateJumpState();
             base.Update();
@@ -98,6 +101,7 @@ namespace Platformer.Mechanics
                 case JumpState.PrepareToJump:
                     jumpState = JumpState.Jumping;
                     jump = true;
+                    
                     stopJump = false;
                     break;
                 case JumpState.Jumping:
@@ -112,11 +116,12 @@ namespace Platformer.Mechanics
                     {
                         Schedule<PlayerLanded>().player = this;
                         jumpState = JumpState.Landed;
-                        animator.SetBool("jumping", false);
+                        animator.SetBool("isJumping", false);
                     }
                     break;
                 case JumpState.Landed:
                     jumpState = JumpState.Grounded;
+                    animator.SetBool("isJumping", false);
                     break;
             }
         }
@@ -126,6 +131,7 @@ namespace Platformer.Mechanics
             if (jump && IsGrounded)
             {
                 velocity.y = jumpTakeOffSpeed * model.jumpModifier;
+                animator.SetBool("isJumping", true);
                 jump = false;
             }
             else if (stopJump)
@@ -135,21 +141,28 @@ namespace Platformer.Mechanics
                 {
                     velocity.y = velocity.y * model.jumpDeceleration;
                 }
+                
+                
             }
+            
 
             if (move.x > 0.01f)
             {
-                animator.SetBool("run", true);
+                animator.SetBool("running", true);
                 spriteRenderer.flipX = false;
             }
             else if (move.x < -0.01f)
             {
-                animator.SetBool("run", true);
+                animator.SetBool("running", true);
                 spriteRenderer.flipX = true;
+            }
+            else
+            {
+                animator.SetBool("running", false);
             }
 
             animator.SetBool("grounded", IsGrounded);
-            animator.SetBool("jumping", false);
+          
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
 
             targetVelocity = move * maxSpeed;
