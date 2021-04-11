@@ -13,7 +13,7 @@ public class TutorialManager : MonoBehaviour {
 
     void Start()
     {
-        player.ChangeJump(0);
+       // player.ChangeJump(0);
         continueScreen.SetActive(false);
         for (int i = 0; i < popUps.Length; i++)
         {
@@ -35,16 +35,16 @@ public class TutorialManager : MonoBehaviour {
         }
         if (popUpIndex == 0)
         {
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKey("right") || Input.GetKeyDown("left"))
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 1)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown("up"))
             {
-                player.ChangeJump(700f);
+               // player.ChangeJump(700f);
                 popUpIndex++;
             }
         }

@@ -33,8 +33,8 @@ public class PlayerControlAnimated : MonoBehaviour {
             //movement code
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) {
                   transform.position += (transform.right * Input.GetAxis(axisName)* speed) * Time.deltaTime;
-                  anim.SetBool("walk", true); }
-            else { anim.SetBool("walk", false); }
+                  anim.SetBool("run", true); }
+            else { anim.SetBool("run", false); }
 
             //jump code
             if (Input.GetKey(KeyCode.UpArrow)){

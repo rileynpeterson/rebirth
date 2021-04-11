@@ -41829,7 +41829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
       propertyPath: m_Controller
@@ -41871,6 +41871,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5320615889878393888, guid: bc5281a4aaa69f242a15d9c770bfb061,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 5800000, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
     - {fileID: 11400000, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
@@ -42830,10 +42835,16 @@ MonoBehaviour:
   speed: 6
   axisName: Horizontal
   jump: 30
-  anim: {fileID: 0}
+  anim: {fileID: 1348143858}
   collider2d: {fileID: 0}
-  keyinv: {fileID: 0}
-  mapinv: {fileID: 0}
+  keyinv: {fileID: 837478205}
+  mapinv: {fileID: 851196943}
+--- !u!95 &1348143858 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 87a2357765801c34292d6718d8b4d770,
+    type: 3}
+  m_PrefabInstance: {fileID: 440075512}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1348143860
 MonoBehaviour:
   m_ObjectHideFlags: 0

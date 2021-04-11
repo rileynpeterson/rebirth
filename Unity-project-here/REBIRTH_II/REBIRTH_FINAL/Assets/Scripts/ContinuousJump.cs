@@ -12,7 +12,7 @@ namespace Platformer.Mechanics
     /// This is the main class used to implement control of the player.
     /// It is a superset of the AnimationController class, but is inlined to allow for any kind of customisation.
     /// </summary>
-    public class PlayerController : KinematicObject
+    public class ContinuousJump : KinematicObject
     {
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
@@ -29,8 +29,10 @@ namespace Platformer.Mechanics
 
         public JumpState jumpState = JumpState.Grounded;
         private bool stopJump;
-        /*internal new*/ public Collider2D collider2d;
-        /*internal new*/ public AudioSource audioSource;
+        /*internal new*/
+        public Collider2D collider2d;
+        /*internal new*/
+        public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
 
@@ -62,29 +64,27 @@ namespace Platformer.Mechanics
 
         protected override void Update()
         {
+
+
             if (controlEnabled)
             {
                 move.x = Input.GetAxis("Horizontal");
                 animator.SetBool("run", true);
-
                 if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
-                {
-                    animator.SetBool("run", false);
-                    animator.SetTrigger("takeoff");
-                    animator.SetBool("jump", true);
-                    jumpState = JumpState.PrepareToJump;
-                }
-
-                else if (Input.GetButtonUp("Jump"))
-                {
-
-                    stopJump = true;
-                    Schedule<PlayerStopJump>().player = this;
-                }
+                    animator.SetBool("run", true);
+                animator.SetTrigger("takeoff");
+                jumpState = JumpState.PrepareToJump;
+                animator.SetBool("jump", true);
+            }
+            else if (Input.GetButtonUp("Jump"))
+            {
+                stopJump = true;
+               // Schedule<PlayerStopJump>().player = this;
             }
             else
             {
                 move.x = 0;
+                animator.SetBool("run", false);
             }
             UpdateJumpState();
             base.Update();
@@ -103,16 +103,16 @@ namespace Platformer.Mechanics
                 case JumpState.Jumping:
                     if (!IsGrounded)
                     {
-                        Schedule<PlayerJumped>().player = this;
+                        //Schedule<PlayerJumped>().player = this;
                         jumpState = JumpState.InFlight;
                     }
                     break;
                 case JumpState.InFlight:
                     if (IsGrounded)
                     {
-                        Schedule<PlayerLanded>().player = this;
+                       // Schedule<PlayerLanded>().player = this;
                         jumpState = JumpState.Landed;
-                        animator.SetBool("jumping", false);
+                        animator.SetBool("jump", false);
                     }
                     break;
                 case JumpState.Landed:
@@ -138,18 +138,11 @@ namespace Platformer.Mechanics
             }
 
             if (move.x > 0.01f)
-            {
-                animator.SetBool("run", true);
                 spriteRenderer.flipX = false;
-            }
             else if (move.x < -0.01f)
-            {
-                animator.SetBool("run", true);
                 spriteRenderer.flipX = true;
-            }
 
             animator.SetBool("grounded", IsGrounded);
-            animator.SetBool("jumping", false);
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
 
             targetVelocity = move * maxSpeed;
@@ -164,15 +157,15 @@ namespace Platformer.Mechanics
             Landed
         }
 
-         void OnTriggerEnter2D(Collider2D other)
+        void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.tag =="PickUpKey")
+            if (other.gameObject.tag == "PickUpKey")
             {
                 other.gameObject.SetActive(false);
                 keyinv.SetActive(true);
             }
-            
-            if(other.gameObject.tag == "PickUpMap")
+
+            if (other.gameObject.tag == "PickUpMap")
             {
                 other.gameObject.SetActive(false);
                 mapinv.SetActive(true);
