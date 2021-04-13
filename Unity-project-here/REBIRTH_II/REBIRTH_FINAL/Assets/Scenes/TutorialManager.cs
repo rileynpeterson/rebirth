@@ -9,6 +9,10 @@ public class TutorialManager : MonoBehaviour {
     public float waitTime = 630f;
     public PlatformerCharacter2D player;
     public GameObject continueScreen;
+    public GameObject key;
+    public GameObject keyinv;
+    public GameObject map;
+    public GameObject mapinv;
     // Update is called once per frame
 
     void Start()
@@ -19,6 +23,8 @@ public class TutorialManager : MonoBehaviour {
         {
             popUps[i].SetActive(false);
         }
+        key.SetActive(false);
+        map.SetActive(false);
     }
     void Update()
     {
@@ -42,13 +48,31 @@ public class TutorialManager : MonoBehaviour {
         }
         else if (popUpIndex == 1)
         {
-            if (Input.GetKeyDown("up"))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                // player.ChangeJump(700f);
                 popUpIndex++;
             }
         }
-        else if (popUpIndex == 2)
+        else if(popUpIndex == 2)
+        {
+            key.SetActive(true);
+            if (keyinv.activeSelf)
+            {
+                popUpIndex++;
+            }
+        }
+
+        else if (popUpIndex == 3)
+        {
+            map.SetActive(true);
+            if (mapinv.activeSelf)
+            {
+                popUpIndex++;
+            }
+        }
+
+        else if (popUpIndex == 4)
         {
             if (waitTime <= 0)
             {
@@ -60,7 +84,7 @@ public class TutorialManager : MonoBehaviour {
             }
 
         }
-        else if (popUpIndex == 3)
+        else if (popUpIndex == 5)
         {
             continueScreen.SetActive(true);
         }

@@ -29,9 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level III Draft.unity
     guid: 1613209b92375af459158926667f167b
-  - enabled: 1
-    path: Assets/Scenes/Level IV Draft.unity
-    guid: 2ca6987c1c9e84a74a39a13a1fe6c318
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Level V Draft.unity
     guid: 5abd6fd6e17294a04a038348f0004549

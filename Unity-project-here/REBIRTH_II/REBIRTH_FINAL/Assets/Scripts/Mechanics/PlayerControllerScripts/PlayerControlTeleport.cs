@@ -11,13 +11,18 @@
         tp_trans.position = new_pos;
     }*/
     //Set up a variable to access the player from
- private Transform player; 
- 
- void Awake()
+ private Transform player;
+    public GameObject keyinv;
+    public GameObject mapinv;
+
+
+    void Awake()
  {
  //Find the player object and set it
  player = GameObject.FindGameObjectWithTag("Player").transform;
- }
+        keyinv.SetActive(false);
+        mapinv.SetActive(false);
+    }
  
  void Update()
  {
@@ -25,5 +30,20 @@
  if (Input.GetMouseButtonDown(0))
  player.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
  }
- }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "PickUpKey")
+        {
+            other.gameObject.SetActive(false);
+            keyinv.SetActive(true);
+        }
+
+        if (other.gameObject.tag == "PickUpMap")
+        {
+            other.gameObject.SetActive(false);
+            mapinv.SetActive(true);
+        }
+    }
+}
  
