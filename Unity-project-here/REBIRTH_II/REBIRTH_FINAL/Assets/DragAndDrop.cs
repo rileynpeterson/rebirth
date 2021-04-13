@@ -50,9 +50,14 @@ public class DragAndDrop : MonoBehaviour
     private float startPosX;
     private float startPosY;
 
+
+    public GameObject keyinv;
+    public GameObject mapinv;
+
     void Start()
     {
-
+        keyinv.SetActive(false);
+        mapinv.SetActive(false);
     }
 
     void Update()
@@ -85,5 +90,19 @@ public class DragAndDrop : MonoBehaviour
     private void OnMouseUp()
     {
         moving = false;
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "PickUpKey")
+        {
+            other.gameObject.SetActive(false);
+            keyinv.SetActive(true);
+        }
+
+        if (other.gameObject.tag == "PickUpMap")
+        {
+            other.gameObject.SetActive(false);
+            mapinv.SetActive(true);
+        }
     }
 }
