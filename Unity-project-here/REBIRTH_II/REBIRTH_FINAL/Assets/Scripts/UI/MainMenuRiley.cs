@@ -8,9 +8,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuRiley : MonoBehaviour
 {
+
+
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Level I Draft");
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void QuitGame()
@@ -21,7 +24,8 @@ public class MainMenuRiley : MonoBehaviour
 
     public void Tutorial()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene("Tutorial 1-level 1");
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
 }
