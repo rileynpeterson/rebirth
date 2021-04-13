@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LoadLevelAfterTime : MonoBehaviour
 {
     [SerializeField]
-    private float delayBeforeLoading = 10f;
+    private float delayBeforeLoading = 20f;
     [SerializeField]
     private string sceneNameToLoad;
     private float timeElapsed;
