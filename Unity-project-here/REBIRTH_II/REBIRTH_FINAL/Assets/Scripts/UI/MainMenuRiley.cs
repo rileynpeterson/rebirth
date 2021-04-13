@@ -24,7 +24,7 @@ public class MainMenuRiley : MonoBehaviour
 
     public void Tutorial()
     {
-        SceneManager.LoadScene("Tutorial 1-level 1");
+        SceneManager.LoadScene("Tutorial");
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
