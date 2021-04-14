@@ -109,6 +109,7 @@ namespace Platformer.Mechanics
                     {
                         Schedule<PlayerJumped>().player = this;
                         jumpState = JumpState.InFlight;
+
                     }
                     break;
                 case JumpState.InFlight:
@@ -116,12 +117,12 @@ namespace Platformer.Mechanics
                     {
                         Schedule<PlayerLanded>().player = this;
                         jumpState = JumpState.Landed;
-                        animator.SetBool("isJumping", false);
+                        animator.SetBool("isFalling", false);
                     }
                     break;
                 case JumpState.Landed:
                     jumpState = JumpState.Grounded;
-                    animator.SetBool("isJumping", false);
+                    animator.SetBool("isFalling", false);
                     break;
             }
         }
@@ -140,9 +141,15 @@ namespace Platformer.Mechanics
                 if (velocity.y > 0)
                 {
                     velocity.y = velocity.y * model.jumpDeceleration;
+                    animator.SetBool("isJumping", false);
+                    animator.SetBool("isFalling", true);
+
                 }
-                
-                
+
+            }
+            else if(velocity.y < 0)
+            {
+                animator.SetBool("isFalling", true);
             }
             
 
