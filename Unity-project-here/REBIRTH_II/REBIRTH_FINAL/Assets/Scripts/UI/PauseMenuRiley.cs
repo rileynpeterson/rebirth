@@ -9,6 +9,7 @@ public class PauseMenuRiley : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    public string curr_level;
 
     // Update is called once per frame
     void Update()
@@ -52,8 +53,14 @@ public class PauseMenuRiley : MonoBehaviour
     //quit function
     public void QuitMenu()
     {
-        Debug.Log("Quitting Game.");
+     
         Application.Quit();
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(curr_level);
+        Resume();
     }
 
 }
