@@ -43,6 +43,7 @@ namespace Platformer.Mechanics
         public GameObject keyinv;
         public GameObject mapinv;
 
+        public bool isReversed;
         public Bounds Bounds => collider2d.bounds;
 
         protected override void Start()
@@ -66,8 +67,17 @@ namespace Platformer.Mechanics
 
             if (controlEnabled)
             {
-                move.x = Input.GetAxis("Horizontal");
-                
+                if (!isReversed)
+                {
+                    move.x = Input.GetAxis("Horizontal");
+
+                }
+                if (isReversed)
+                {
+                    move.x = Input.GetAxis("Horizontal") * (-1);
+                    //if (!isReversed) { move.x = Input.GetAxis("Horizontal"); } else { move.x = Input.GetAxis("Horizontal") * (-1); }
+
+                }
 
                 if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
                 {
