@@ -9,8 +9,8 @@ public class TutorialManager : MonoBehaviour {
     public float waitTime = 630f;
     public PlatformerCharacter2D player;
     public GameObject continueScreen;
-    public GameObject key;
-    public GameObject keyinv;
+    public GameObject bluegem;
+    public GameObject bluegeminv;
     public GameObject map;
     public GameObject mapinv;
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class TutorialManager : MonoBehaviour {
         {
             popUps[i].SetActive(false);
         }
-        key.SetActive(false);
+        bluegem.SetActive(false);
         map.SetActive(false);
     }
     void Update()
@@ -56,8 +56,8 @@ public class TutorialManager : MonoBehaviour {
         }
         else if(popUpIndex == 2)
         {
-            key.SetActive(true);
-            if (keyinv.activeSelf)
+            bluegem.SetActive(true);
+            if (bluegeminv.activeSelf)
             {
                 popUpIndex++;
             }
@@ -89,10 +89,10 @@ public class TutorialManager : MonoBehaviour {
             continueScreen.SetActive(true);
         }
         
-        if (player.IsDead() == true)
+/*        if (player.IsDead() == true)
         {
             RestartTutorial();
-        }
+        }*/
 
     }
 
