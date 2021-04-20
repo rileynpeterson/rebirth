@@ -8,7 +8,7 @@ public class TutorialManager : MonoBehaviour {
     private int popUpIndex;
     public float waitTime = 630f;
     public PlatformerCharacter2D player;
-    public GameObject continueScreen;
+   // public GameObject continueScreen;
     public GameObject bluegem;
     public GameObject bluegeminv;
     public GameObject map;
@@ -18,7 +18,7 @@ public class TutorialManager : MonoBehaviour {
     void Start()
     {
        // player.ChangeJump(0);
-        continueScreen.SetActive(false);
+//        continueScreen.SetActive(false);
         for (int i = 0; i < popUps.Length; i++)
         {
             popUps[i].SetActive(false);
@@ -86,7 +86,7 @@ public class TutorialManager : MonoBehaviour {
         }
         else if (popUpIndex == 5)
         {
-            continueScreen.SetActive(true);
+            //continueScreen.SetActive(true);
         }
         
 /*        if (player.IsDead() == true)

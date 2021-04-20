@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     int noOfGems;
 
     [SerializeField]
-    Text gemcount;
+    Text gemCount;
 
     void Start()
     {
@@ -27,11 +27,11 @@ public class GameManager : MonoBehaviour
 
         for(int i = 0; i < gems.Length; i++)
         {
-            if(gems[i].GetComponent<GemSwitch>().Gemcollected == false)
+            if(gems[i].GetComponent<GemSwitch>().gemCollected == false)
             {
                 x++;
             }
-            else if(gems[i].GetComponent<GemSwitch>().Gemcollected == true)
+            else if(gems[i].GetComponent<GemSwitch>().gemCollected == true)
             {
                 noOfGems--;
             }
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        gemcount.text = GetNoOfGems().ToString();
+//        gemCount.text = GetNoOfGems().ToString();
 
         //GetexitPortalState();
     }
