@@ -4,11 +4,7 @@ using System.Collections;
 public class PortalTrigger : MonoBehaviour {
 
 	public Portal portal;
-
-
-	public bool ignoreTrigger;
-
-
+	//public bool ignoreTrigger;
 
 	// Use this for initialization
 	void Start () {
@@ -23,8 +19,8 @@ public class PortalTrigger : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 
-		if (ignoreTrigger)
-						return;
+		//if (ignoreTrigger)
+						//return;
 
 		if (other.tag == "Player")
 						portal.PortalOpens ();
@@ -34,24 +30,24 @@ public class PortalTrigger : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D other){
 
 
-		if (ignoreTrigger)
-			return;
+		//if (ignoreTrigger)
+			//return;
 
 		if (other.tag == "Player")
 			portal.PortalCloses();
 		
 	}
 
-	public void Toggle(bool state)
+	/*public void Toggle(bool state)
 	{
 		if (state)
 						portal.PortalOpens ();
 				else
 						portal.PortalCloses ();
-		}
+		}*/
 
 
-	void OnDrawGizmos()
+	/*void OnDrawGizmos()
 	{
 		if (!ignoreTrigger) {
 			BoxCollider2D box = GetComponent<BoxCollider2D>();
@@ -61,5 +57,5 @@ public class PortalTrigger : MonoBehaviour {
 				}
 
 
-	}
+	}*/
 }

@@ -4,6 +4,29 @@ using UnityEngine;
 
 public class GemSwitch : MonoBehaviour
 {
+    [SerializeField] 
+    private GemType gemType;
+    public enum GemType
+    {
+        Red, Green, Blue
+    }
+
+    public GemType GetGemType()
+    {
+        return gemType;
+    }
+}
+
+
+
+
+
+/*using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GemSwitch : MonoBehaviour
+{
  //Animator myAnimator;
 
 
@@ -38,4 +61,4 @@ public class GemSwitch : MonoBehaviour
     gemCollected = true;
  }
 
-}
+}*/

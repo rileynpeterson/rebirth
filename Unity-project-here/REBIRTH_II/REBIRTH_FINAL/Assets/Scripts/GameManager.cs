@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         int x = 0;
 
-        for(int i = 0; i < gems.Length; i++)
+        /*for(int i = 0; i < gems.Length; i++)
         {
             if(gems[i].GetComponent<GemSwitch>().gemCollected == false)
             {
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
             {
                 noOfGems--;
             }
-        }
+        }*/
         noOfGems = x;
 
 
