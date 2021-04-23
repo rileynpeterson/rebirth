@@ -11,8 +11,8 @@ public class TutorialManager : MonoBehaviour {
    // public GameObject continueScreen;
     public GameObject bluegem;
     public GameObject bluegeminv;
-    public GameObject map;
-    public GameObject mapinv;
+    public GameObject redgem;
+    public GameObject redgeminv;
     // Update is called once per frame
 
     void Start()
@@ -24,7 +24,7 @@ public class TutorialManager : MonoBehaviour {
             popUps[i].SetActive(false);
         }
         bluegem.SetActive(false);
-        map.SetActive(false);
+        redgem.SetActive(false);
     }
     void Update()
     {
@@ -65,8 +65,8 @@ public class TutorialManager : MonoBehaviour {
 
         else if (popUpIndex == 3)
         {
-            map.SetActive(true);
-            if (mapinv.activeSelf)
+            redgem.SetActive(true);
+            if (redgeminv.activeSelf)
             {
                 popUpIndex++;
             }

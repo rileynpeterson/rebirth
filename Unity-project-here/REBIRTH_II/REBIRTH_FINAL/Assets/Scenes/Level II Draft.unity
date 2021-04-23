@@ -302,6 +302,7 @@ MonoBehaviour:
   keyinv: {fileID: 1728700912}
   mapinv: {fileID: 1829991868}
   isReversed: 1
+  isJumpReversed: 0
 --- !u!114 &95921625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41875,7 +41876,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -63, y: 49.65216}
+  m_AnchoredPosition: {x: -63, y: 49.652344}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &634899113
@@ -42615,7 +42616,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -171, y: 49.65216}
+  m_AnchoredPosition: {x: -171, y: 49.652344}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1288368803
