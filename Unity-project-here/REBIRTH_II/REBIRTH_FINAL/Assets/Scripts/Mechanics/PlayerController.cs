@@ -19,7 +19,7 @@ namespace Platformer.Mechanics
         public AudioClip ouchAudio;
         public int maxHealth = 100;
         public int currentHealth;
-        public Healthbar healthbar;
+        public HealthBar healthbar;
 
         /// <summary>
         /// Max horizontal speed of the player.
@@ -226,6 +226,10 @@ namespace Platformer.Mechanics
         void TakeDamage(int dmg)
         {
             currentHealth -= dmg;
+            if (currentHealth <= 0)
+            {
+                
+            }
         }
     }
 }
