@@ -17,6 +17,9 @@ namespace Platformer.Mechanics
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
+        public int maxHealth = 100;
+        public int currentHealth;
+        public Healthbar healthbar;
 
         /// <summary>
         /// Max horizontal speed of the player.
@@ -51,6 +54,8 @@ namespace Platformer.Mechanics
         {
             keyinv.SetActive(false);
             mapinv.SetActive(false);
+            currentHealth = maxHealth;
+            healthbar.SetMaxHealth(maxHealth);
 
         }
         void Awake()
@@ -216,6 +221,11 @@ namespace Platformer.Mechanics
                 other.gameObject.SetActive(false);
                 mapinv.SetActive(true);
             }
+        }
+
+        void TakeDamage(int dmg)
+        {
+            currentHealth -= dmg;
         }
     }
 }
