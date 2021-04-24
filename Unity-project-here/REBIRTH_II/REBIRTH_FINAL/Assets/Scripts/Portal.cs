@@ -16,12 +16,12 @@ public class Portal : MonoBehaviour {
 
 	public void PortalOpens()
 	{
-		anim.SetBool ("Opens", true);
+		anim.SetBool ("Open", true);
 		}
 
 	public void PortalCloses()
 	{
-		anim.SetBool ("Opens", false);
+		anim.SetBool ("Open", false);
 	}
 
 	void CollEnable()

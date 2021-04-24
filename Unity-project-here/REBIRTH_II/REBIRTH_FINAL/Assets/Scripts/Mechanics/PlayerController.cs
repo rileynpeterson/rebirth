@@ -44,6 +44,7 @@ namespace Platformer.Mechanics
         public GameObject mapinv;
 
         public bool isReversed;
+        public bool isJumpReversed;
         public Bounds Bounds => collider2d.bounds;
 
         protected override void Start()
@@ -79,7 +80,15 @@ namespace Platformer.Mechanics
 
                 }
 
-                if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
+                if (!isJumpReversed && jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
+                {
+                    animator.SetBool("running", false);
+                    animator.SetTrigger("takeoff");
+                 
+                    jumpState = JumpState.PrepareToJump;
+                }
+
+                if (isJumpReversed && jumpState == JumpState.Grounded && Input.GetButtonDown("JumpReversed"))
                 {
                     animator.SetBool("running", false);
                     animator.SetTrigger("takeoff");
