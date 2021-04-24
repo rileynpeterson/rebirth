@@ -7,9 +7,16 @@ public class GemPickUp : MonoBehaviour {
     private float originalY;
     public float bobStrength = 0.5f;
 
-    void Start(){
-        this.originalY = this.transform.position.y;
-    }
+    private GameController gameController;
+
+    void Start () {
+            this.originalY = this.transform.position.y;
+            GameObject CtrlTemp = GameObject.FindWithTag ("GameController");
+            if (CtrlTemp != null) {
+                  gameController = CtrlTemp.GetComponent <GameController>(); }
+            if (CtrlTemp == null) {
+                  Debug.Log ("Cannot find 'GameController' script"); }
+      }
 
     void Update() {
         transform.position = new Vector2(transform.position.x,
@@ -20,11 +27,13 @@ public class GemPickUp : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Player"){
         GetComponent<AudioSource>().Play();
-        StartCoroutine(DestroyThis()); }
+        StartCoroutine(DestroyThis());
+        gameController.AddScore (1); }
     }
 
     IEnumerator DestroyThis(){
         yield return new WaitForSeconds(0.3f);
         Destroy(gameObject);
     }
+
 }

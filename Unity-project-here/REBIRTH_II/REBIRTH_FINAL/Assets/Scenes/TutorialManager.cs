@@ -23,8 +23,8 @@ public class TutorialManager : MonoBehaviour {
         {
             popUps[i].SetActive(false);
         }
-        bluegem.SetActive(false);
-        redgem.SetActive(false);
+        bluegem.SetActive(true);
+        redgem.SetActive(true);
     }
     void Update()
     {
