@@ -244,6 +244,7 @@ namespace Platformer.Mechanics
         void Death()
         {
             deathScreen.SetActive(true);
+            Time.timeScale = 0f; //pauses time
         }
     }
 }
