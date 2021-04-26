@@ -229,6 +229,11 @@ namespace Platformer.Mechanics
             {
                 TakeDamage(10);
             }
+
+            if(other.gameObject.tag == "Enemy")
+            {
+                TakeDamage(10);
+            }
         }
 
         void TakeDamage(int dmg)

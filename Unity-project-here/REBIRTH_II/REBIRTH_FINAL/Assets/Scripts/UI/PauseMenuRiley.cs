@@ -9,21 +9,30 @@ public class PauseMenuRiley : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    public GameObject deathScreen;
+    public static bool dead = false;
     public string curr_level;
 
     // Update is called once per frame
     void Update()
     {
+        if (deathScreen.activeSelf)
+        {
+            dead = true;
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
             {
                 Resume();
             }
-            else
+
+             if (!dead && !GameIsPaused)
             {
                 Pause();
             }
+
+
         }
     }
 
@@ -63,4 +72,8 @@ public class PauseMenuRiley : MonoBehaviour
         Resume();
     }
 
+    public void Disable()
+    {
+
+    }
 }
