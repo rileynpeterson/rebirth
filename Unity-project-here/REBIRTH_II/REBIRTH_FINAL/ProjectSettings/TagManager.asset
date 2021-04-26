@@ -8,6 +8,7 @@ TagManager:
   - PickUp
   - PickUpKey
   - PickUpMap
+  - Spike
   layers:
   - Default
   - TransparentFX

@@ -50,12 +50,15 @@ namespace Platformer.Mechanics
         public bool isJumpReversed;
         public Bounds Bounds => collider2d.bounds;
 
+        public GameObject deathScreen;
+
         protected override void Start()
         {
             keyinv.SetActive(false);
             mapinv.SetActive(false);
             currentHealth = maxHealth;
             healthbar.SetMaxHealth(maxHealth);
+            deathScreen.SetActive(false);
 
         }
         void Awake()
@@ -221,15 +224,26 @@ namespace Platformer.Mechanics
                 other.gameObject.SetActive(false);
                 mapinv.SetActive(true);
             }
+
+            if(other.gameObject.tag == "Spike")
+            {
+                TakeDamage(10);
+            }
         }
 
         void TakeDamage(int dmg)
         {
             currentHealth -= dmg;
+            healthbar.SetHealth(currentHealth);
             if (currentHealth <= 0)
             {
-                
+                Death();
             }
+        }
+
+        void Death()
+        {
+            deathScreen.SetActive(true);
         }
     }
 }
