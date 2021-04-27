@@ -16,13 +16,13 @@
     //public GameObject mapinv;
 
 
-    /*void Awake()
+    void Awake()
  {
  //Find the player object and set it
  player = GameObject.FindGameObjectWithTag("Player").transform;
-        keyinv.SetActive(false);
-        mapinv.SetActive(false);
-    }*/
+        //keyinv.SetActive(false);
+        //mapinv.SetActive(false);
+    }
  
  void Update()
  {
