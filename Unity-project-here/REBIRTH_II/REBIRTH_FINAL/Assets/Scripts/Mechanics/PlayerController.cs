@@ -228,6 +228,7 @@ namespace Platformer.Mechanics
             if(other.gameObject.tag == "Spike")
             {
                 TakeDamage(10);
+                Debug.Log(currentHealth);
             }
 
             if(other.gameObject.tag == "Enemy")
