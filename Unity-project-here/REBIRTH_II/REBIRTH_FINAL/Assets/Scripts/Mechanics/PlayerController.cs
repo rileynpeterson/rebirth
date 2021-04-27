@@ -18,7 +18,7 @@ namespace Platformer.Mechanics
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
         public int maxHealth = 100;
-        public int currentHealth;
+        public int currentHealth = 100;
         public HealthBar healthbar;
 
         /// <summary>

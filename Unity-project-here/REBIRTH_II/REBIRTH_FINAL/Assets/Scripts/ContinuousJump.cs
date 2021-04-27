@@ -170,6 +170,31 @@ namespace Platformer.Mechanics
                 other.gameObject.SetActive(false);
                 mapinv.SetActive(true);
             }
+            if (other.gameObject.tag == "Spike")
+            {
+                TakeDamage(10);
+                Debug.Log(currentHealth);
+            }
+
+            if (other.gameObject.tag == "Enemy")
+            {
+                TakeDamage(10);
+            }
         }
+
+        void TakeDamage(int dmg)
+        {
+            currentHealth -= dmg;
+            healthbar.SetHealth(currentHealth);
+            if (currentHealth <= 0)
+            {
+                Death();
+            }
+        }
+
+        void Death()
+        {
+            deathScreen.SetActive(true);
+            Time.t
     }
 }
