@@ -18,11 +18,11 @@ public class LoadLevelOnCollision : MonoBehaviour
     {
         int x = newgameController.getScore();
 
-       // if (x == totalgems && collision.gameObject.tag == "Player")
-        if (collision.gameObject.tag == "Player")
+        if (x == totalgems /*&& collision.gameObject.tag == "Player"*/)
+        //if (collision.gameObject.tag == "Player")
         //if(other.gameObject.tag == "Player")
         {
-            //SceneManager.LoadScene(sceneNameToLoad);
+            SceneManager.LoadScene(sceneNameToLoad);
             Debug.Log(x);
         }
     }
