@@ -26,4 +26,9 @@ public class LoadLevelOnCollision : MonoBehaviour
             Debug.Log(x);
         }
     }
+
+    public int getTotalgems()
+    {
+        return totalgems;
+    } 
 }

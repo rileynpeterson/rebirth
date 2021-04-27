@@ -2334,6 +2334,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 985370577}
   m_CullTransparentMesh: 0
+--- !u!114 &1008014784 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7622095289851222630, guid: 4bbd3322ddcab432b9ec214278fb3b37,
+    type: 3}
+  m_PrefabInstance: {fileID: 7622095288594230486}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ed9d7193d5d481b9990c95c56a0c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1136401190
 GameObject:
   m_ObjectHideFlags: 0
@@ -17060,6 +17072,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791788921}
   m_CullTransparentMesh: 0
+--- !u!1001 &1835335371
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1987762209737318806, guid: bdd94851e8c184cceaea8940dc4bff5a,
+        type: 3}
+      propertyPath: m_Name
+      value: Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102449222479467714, guid: bdd94851e8c184cceaea8940dc4bff5a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 629
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102449222479467714, guid: bdd94851e8c184cceaea8940dc4bff5a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 395
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102449222479467714, guid: bdd94851e8c184cceaea8940dc4bff5a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.0288265
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102449222479467714, guid: bdd94851e8c184cceaea8940dc4bff5a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102449222479467714, guid: bdd94851e8c184cceaea8940dc4bff5a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102449222479467714, guid: bdd94851e8c184cceaea8940dc4bff5a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102449222479467714, guid: bdd94851e8c184cceaea8940dc4bff5a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102449222479467714, guid: bdd94851e8c184cceaea8940dc4bff5a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102449222479467714, guid: bdd94851e8c184cceaea8940dc4bff5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102449222479467714, guid: bdd94851e8c184cceaea8940dc4bff5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102449222479467714, guid: bdd94851e8c184cceaea8940dc4bff5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bdd94851e8c184cceaea8940dc4bff5a, type: 3}
 --- !u!1 &2015332190
 GameObject:
   m_ObjectHideFlags: 0
@@ -17615,6 +17696,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gems UI
       objectReference: {fileID: 0}
+    - target: {fileID: 4171388626482557171, guid: 90f3e13c40d1944f5be9b4a024f59fe3,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.6783177
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171388626482557171, guid: 90f3e13c40d1944f5be9b4a024f59fe3,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.40899786
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171388626482557171, guid: 90f3e13c40d1944f5be9b4a024f59fe3,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.9528302
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90f3e13c40d1944f5be9b4a024f59fe3, type: 3}
 --- !u!1001 &3298905110092289534
@@ -18044,6 +18140,11 @@ PrefabInstance:
       propertyPath: textGameObject
       value: 
       objectReference: {fileID: 66485049}
+    - target: {fileID: 7725934954943060077, guid: 35d74a97c25c44577a907eeb2cb0ae4d,
+        type: 3}
+      propertyPath: mylevel
+      value: 
+      objectReference: {fileID: 1008014784}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35d74a97c25c44577a907eeb2cb0ae4d, type: 3}
 --- !u!1001 &8809505535740332569

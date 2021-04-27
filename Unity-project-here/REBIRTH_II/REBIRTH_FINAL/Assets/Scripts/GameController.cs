@@ -8,10 +8,13 @@ public class GameController : MonoBehaviour
     private int score;
     private string sceneNameToLoad;
 
+    public LoadLevelOnCollision mylevel;
+
     void Start () 
     {
         score = 0;
         UpdateScore(); 
+
     }
 
     public void AddScore (int newScoreValue) 
@@ -22,8 +25,9 @@ public class GameController : MonoBehaviour
     
     void UpdateScore () 
     {
+        int x = mylevel.getTotalgems();
         Text scoreTextB = textGameObject.GetComponent<Text>();
-        scoreTextB.text = "Gems: " + score;
+        scoreTextB.text = "Gems: " + score + "/" + x;
         Debug.Log ("Gem touch!");
     }
 
