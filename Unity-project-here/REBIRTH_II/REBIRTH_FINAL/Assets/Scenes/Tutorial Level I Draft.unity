@@ -2584,6 +2584,9 @@ MonoBehaviour:
   jumpAudio: {fileID: 0}
   respawnAudio: {fileID: 0}
   ouchAudio: {fileID: 0}
+  maxHealth: 100
+  currentHealth: 0
+  healthbar: {fileID: 0}
   maxSpeed: 7
   jumpTakeOffSpeed: 7
   jumpState: 0
@@ -2595,6 +2598,7 @@ MonoBehaviour:
   mapinv: {fileID: 521721219}
   isReversed: 0
   isJumpReversed: 0
+  deathScreen: {fileID: 0}
 --- !u!114 &1113313276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2696,6 +2700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 838741318}
+  deathScreen: {fileID: 0}
   curr_level: Level IV Draft
 --- !u!114 &1165831502
 MonoBehaviour:
@@ -2810,6 +2815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 352067403}
+  deathScreen: {fileID: 0}
   curr_level: 
 --- !u!114 &1181728874
 MonoBehaviour:
@@ -17262,7 +17268,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.711975
+  orthographic size: 9.799168
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
