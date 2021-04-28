@@ -35,6 +35,10 @@ namespace Platformer.Mechanics
         public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
+        public HealthBar healthBar;
+
+
+        public GameObject deathScreen;
 
         bool jump;
         Vector2 move;
@@ -46,11 +50,16 @@ namespace Platformer.Mechanics
         public GameObject mapinv;
 
         public Bounds Bounds => collider2d.bounds;
+        public int maxHealth = 100;
+        public int currentHealth = 100;
 
         protected override void Start()
         {
             keyinv.SetActive(false);
             mapinv.SetActive(false);
+            currentHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
+            deathScreen.SetActive(false);
 
         }
         void Awake()
@@ -185,7 +194,7 @@ namespace Platformer.Mechanics
         void TakeDamage(int dmg)
         {
             currentHealth -= dmg;
-            healthbar.SetHealth(currentHealth);
+            healthBar.SetHealth(currentHealth);
             if (currentHealth <= 0)
             {
                 Death();
@@ -195,6 +204,7 @@ namespace Platformer.Mechanics
         void Death()
         {
             deathScreen.SetActive(true);
-            Time.t
+            Time.timeScale = 0f;
+        }
     }
 }

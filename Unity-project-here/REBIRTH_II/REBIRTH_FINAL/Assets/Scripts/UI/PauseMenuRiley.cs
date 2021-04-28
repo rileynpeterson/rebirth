@@ -16,10 +16,7 @@ public class PauseMenuRiley : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (deathScreen.activeSelf)
-        {
-            dead = true;
-        }
+       
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
@@ -27,7 +24,7 @@ public class PauseMenuRiley : MonoBehaviour
                 Resume();
             }
 
-             if (!dead && !GameIsPaused)
+            else 
             {
                 Pause();
             }
