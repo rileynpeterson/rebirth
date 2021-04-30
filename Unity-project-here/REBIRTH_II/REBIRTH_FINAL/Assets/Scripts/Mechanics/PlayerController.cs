@@ -90,15 +90,22 @@ namespace Platformer.Mechanics
 
             if (controlEnabled)
             {
-              /*  if (hardmode)
-                {
-                    timeLeft -=Time.deltaTime;
-                    if (timeLeft < 0)
-                    {
-                        Death();
-                    }
-                }
-              */
+                /*  if (hardmode)
+                  {
+                      timeLeft -=Time.deltaTime;
+                      if (timeLeft < 0)
+                      {
+                          Death();
+                      }
+                      if (currentHealth % 20 == 0){
+                           move.x = Input.GetAxis("Horizontal");
+                       }
+                      if(currentHealth % 20 != 0){
+                             move.x = Input.GetAxis("Horizontal") * (-1);
+                      }
+
+                  }
+                */
                 if (!isReversed && !hardmode)
                 {
                     move.x = Input.GetAxis("Horizontal");
