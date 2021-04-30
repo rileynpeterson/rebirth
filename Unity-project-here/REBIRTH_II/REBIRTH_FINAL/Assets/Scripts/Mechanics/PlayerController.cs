@@ -49,6 +49,9 @@ namespace Platformer.Mechanics
         public bool isReversed;
         public bool isJumpReversed;
         public Bounds Bounds => collider2d.bounds;
+        public bool hardmode;
+        public float timeLeft = 80.0f;
+        public GameObject red_screen;
 
         public GameObject deathScreen;
 
@@ -59,6 +62,7 @@ namespace Platformer.Mechanics
             currentHealth = maxHealth;
             healthbar.SetMaxHealth(maxHealth);
             deathScreen.SetActive(false);
+            red_screen.SetActive(false);
 
         }
         void Awake()
@@ -76,12 +80,20 @@ namespace Platformer.Mechanics
 
             if (controlEnabled)
             {
-                if (!isReversed)
+                if (hardmode)
+                {
+                    timeLeft -=Time.deltaTime;
+                    if (timeLeft < 0)
+                    {
+                        Death();
+                    }
+                }
+                if (!isReversed && !hardmode)
                 {
                     move.x = Input.GetAxis("Horizontal");
 
                 }
-                if (isReversed)
+                if (isReversed && !hardmode)
                 {
                     move.x = Input.GetAxis("Horizontal") * (-1);
                     //if (!isReversed) { move.x = Input.GetAxis("Horizontal"); } else { move.x = Input.GetAxis("Horizontal") * (-1); }
@@ -241,6 +253,7 @@ namespace Platformer.Mechanics
         {
             currentHealth -= dmg;
             healthbar.SetHealth(currentHealth);
+            red_screen.SetActive(true);
             if (currentHealth <= 0)
             {
                 Death();
