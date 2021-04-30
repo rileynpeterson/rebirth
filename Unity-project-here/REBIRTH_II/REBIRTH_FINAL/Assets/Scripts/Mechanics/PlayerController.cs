@@ -19,7 +19,7 @@ namespace Platformer.Mechanics
         public AudioClip ouchAudio;
         public int maxHealth = 100;
         public int currentHealth = 100;
-        public HealthBar healthbar;
+        private HealthBar healthbar;
 
         /// <summary>
         /// Max horizontal speed of the player.
@@ -43,8 +43,8 @@ namespace Platformer.Mechanics
         internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
-        public GameObject keyinv;
-        public GameObject mapinv;
+       // public GameObject keyinv;
+        //public GameObject mapinv;
 
         public bool isReversed;
         public bool isJumpReversed;
@@ -54,8 +54,8 @@ namespace Platformer.Mechanics
 
         protected override void Start()
         {
-            keyinv.SetActive(false);
-            mapinv.SetActive(false);
+            //keyinv.SetActive(false);
+           // mapinv.SetActive(false);
             currentHealth = maxHealth;
             healthbar.SetMaxHealth(maxHealth);
             deathScreen.SetActive(false);
@@ -213,17 +213,17 @@ namespace Platformer.Mechanics
 
          void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.tag =="PickUpKey")
+            /*if (other.gameObject.tag =="PickUpKey")
             {
                 other.gameObject.SetActive(false);
                 keyinv.SetActive(true);
-            }
+            }*/
             
-            if(other.gameObject.tag == "PickUpMap")
+           /* if(other.gameObject.tag == "PickUpMap")
             {
                 other.gameObject.SetActive(false);
                 mapinv.SetActive(true);
-            }
+            }*/
 
             if(other.gameObject.tag == "Spike")
             {
