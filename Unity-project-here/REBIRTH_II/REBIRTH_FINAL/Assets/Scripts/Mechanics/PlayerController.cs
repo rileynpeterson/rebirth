@@ -19,7 +19,7 @@ namespace Platformer.Mechanics
         public AudioClip ouchAudio;
         public int maxHealth = 100;
         public int currentHealth = 100;
-        private HealthBar healthbar;
+        public HealthBar healthbar;
 
         /// <summary>
         /// Max horizontal speed of the player.
@@ -50,10 +50,20 @@ namespace Platformer.Mechanics
         public bool isJumpReversed;
         public Bounds Bounds => collider2d.bounds;
         public bool hardmode;
-        public float timeLeft = 80.0f;
-        public GameObject red_screen;
+       // public float timeLeft = 80.0f;
+     //   public GameObject red_screen;
+
+        //public Text timeCount;
 
         public GameObject deathScreen;
+
+  /*      IEnumerator CountDownToStart()
+        {
+            while (countDownTime)
+            {
+                
+            }
+        }*/
 
         protected override void Start()
         {
@@ -62,7 +72,7 @@ namespace Platformer.Mechanics
             currentHealth = maxHealth;
             healthbar.SetMaxHealth(maxHealth);
             deathScreen.SetActive(false);
-            red_screen.SetActive(false);
+          //  red_screen.SetActive(false);
 
         }
         void Awake()
@@ -80,7 +90,7 @@ namespace Platformer.Mechanics
 
             if (controlEnabled)
             {
-                if (hardmode)
+              /*  if (hardmode)
                 {
                     timeLeft -=Time.deltaTime;
                     if (timeLeft < 0)
@@ -88,6 +98,7 @@ namespace Platformer.Mechanics
                         Death();
                     }
                 }
+              */
                 if (!isReversed && !hardmode)
                 {
                     move.x = Input.GetAxis("Horizontal");
@@ -253,7 +264,7 @@ namespace Platformer.Mechanics
         {
             currentHealth -= dmg;
             healthbar.SetHealth(currentHealth);
-            red_screen.SetActive(true);
+          //  red_screen.SetActive(true);
             if (currentHealth <= 0)
             {
                 Death();
