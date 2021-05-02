@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
 using Platformer.Model;
@@ -35,7 +36,7 @@ namespace Platformer.Mechanics
         public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
-        public HealthBar healthBar;
+        public Image healthBar;
 
 
         public GameObject deathScreen;
@@ -58,7 +59,8 @@ namespace Platformer.Mechanics
             keyinv.SetActive(false);
             mapinv.SetActive(false);
             currentHealth = maxHealth;
-            healthBar.SetMaxHealth(maxHealth);
+            //healthBar.SetMaxHealth(maxHealth);
+            healthBar.fillAmount = maxHealth;
             deathScreen.SetActive(false);
 
         }
@@ -194,7 +196,7 @@ namespace Platformer.Mechanics
         void TakeDamage(int dmg)
         {
             currentHealth -= dmg;
-            healthBar.SetHealth(currentHealth);
+            healthBar.fillAmount = currentHealth;
             if (currentHealth <= 0)
             {
                 Death();
