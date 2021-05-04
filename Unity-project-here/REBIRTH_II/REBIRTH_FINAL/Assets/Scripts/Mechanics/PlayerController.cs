@@ -50,6 +50,8 @@ namespace Platformer.Mechanics
         public bool isJumpReversed;
         public Bounds Bounds => collider2d.bounds;
         public bool hardmode;
+        private bool shakeCam;
+        private bool shakePlayer;
        // public float timeLeft = 80.0f;
      //   public GameObject red_screen;
 
@@ -72,7 +74,10 @@ namespace Platformer.Mechanics
             currentHealth = maxHealth;
             healthbar.SetMaxHealth(maxHealth);
             deathScreen.SetActive(false);
-          //  red_screen.SetActive(false);
+            //  red_screen.SetActive(false);
+            shakeCam = false;
+            shakePlayer = false;
+
 
         }
         void Awake()
@@ -282,6 +287,29 @@ namespace Platformer.Mechanics
         {
             deathScreen.SetActive(true);
             Time.timeScale = 0f; //pauses time
+        }
+
+        void ScreenShake()
+        {
+            RaycastHit2D rayHit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity);
+
+            if(rayHit.collider != null)
+            {
+                if (shakeCam)
+                {
+                    DamageObject(Camera.main.gameObject);
+                }
+
+                if (shakePlayer)
+                {
+                    DamageObject(rayHit.collider.gameObject);
+                }
+            }
+        }
+
+        private void DamageObject(GameObject dmgob)
+        {
+            dmgob.GetComponent<ControlShake>().ShakeMe();
         }
     }
 }
