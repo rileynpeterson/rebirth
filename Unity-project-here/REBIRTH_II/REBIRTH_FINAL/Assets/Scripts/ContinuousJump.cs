@@ -56,8 +56,8 @@ namespace Platformer.Mechanics
 
         protected override void Start()
         {
-            keyinv.SetActive(false);
-            mapinv.SetActive(false);
+          ////keyinv.SetActive(false);
+            //mapinv.SetActive(false);
             currentHealth = maxHealth;
             //healthBar.SetMaxHealth(maxHealth);
             healthBar.fillAmount = maxHealth;
