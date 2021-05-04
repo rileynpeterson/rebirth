@@ -5,6 +5,7 @@ using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
 using Platformer.Model;
 using Platformer.Core;
+using EZCameraShake;
 
 namespace Platformer.Mechanics
 {
@@ -32,8 +33,10 @@ namespace Platformer.Mechanics
 
         public JumpState jumpState = JumpState.Grounded;
         private bool stopJump;
-        /*internal new*/ public Collider2D collider2d;
-        /*internal new*/ public AudioSource audioSource;
+        /*internal new*/
+        public Collider2D collider2d;
+        /*internal new*/
+        public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
 
@@ -43,7 +46,7 @@ namespace Platformer.Mechanics
         internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
-       // public GameObject keyinv;
+        // public GameObject keyinv;
         //public GameObject mapinv;
 
         public bool isReversed;
@@ -52,25 +55,28 @@ namespace Platformer.Mechanics
         public bool hardmode;
         private bool shakeCam;
         private bool shakePlayer;
-       // public float timeLeft = 80.0f;
-     //   public GameObject red_screen;
+
+
+        public float rotationMultiplier = 15f;
+        // public float timeLeft = 80.0f;
+        //   public GameObject red_screen;
 
         //public Text timeCount;
 
         public GameObject deathScreen;
 
-  /*      IEnumerator CountDownToStart()
-        {
-            while (countDownTime)
-            {
-                
-            }
-        }*/
+        /*      IEnumerator CountDownToStart()
+              {
+                  while (countDownTime)
+                  {
+
+                  }
+              }*/
 
         protected override void Start()
         {
             //keyinv.SetActive(false);
-           // mapinv.SetActive(false);
+            // mapinv.SetActive(false);
             currentHealth = maxHealth;
             healthbar.SetMaxHealth(maxHealth);
             deathScreen.SetActive(false);
@@ -127,7 +133,7 @@ namespace Platformer.Mechanics
                 {
                     animator.SetBool("running", false);
                     animator.SetTrigger("takeoff");
-                 
+
                     jumpState = JumpState.PrepareToJump;
                 }
 
@@ -135,13 +141,13 @@ namespace Platformer.Mechanics
                 {
                     animator.SetBool("running", false);
                     animator.SetTrigger("takeoff");
-                 
+
                     jumpState = JumpState.PrepareToJump;
                 }
 
                 else if (Input.GetButtonUp("Jump"))
                 {
-                    
+
                     stopJump = true;
                     Schedule<PlayerStopJump>().player = this;
                 }
@@ -149,7 +155,7 @@ namespace Platformer.Mechanics
             else
             {
                 move.x = 0;
-               
+
             }
             UpdateJumpState();
             base.Update();
@@ -163,7 +169,7 @@ namespace Platformer.Mechanics
                 case JumpState.PrepareToJump:
                     jumpState = JumpState.Jumping;
                     jump = true;
-                    
+
                     stopJump = false;
                     break;
                 case JumpState.Jumping:
@@ -209,11 +215,11 @@ namespace Platformer.Mechanics
                 }
 
             }
-            else if(velocity.y < 0)
+            else if (velocity.y < 0)
             {
                 animator.SetBool("isFalling", true);
             }
-            
+
 
             if (move.x > 0.01f)
             {
@@ -231,7 +237,7 @@ namespace Platformer.Mechanics
             }
 
             animator.SetBool("grounded", IsGrounded);
-          
+
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
 
             targetVelocity = move * maxSpeed;
@@ -246,27 +252,27 @@ namespace Platformer.Mechanics
             Landed
         }
 
-         void OnTriggerEnter2D(Collider2D other)
+        void OnTriggerEnter2D(Collider2D other)
         {
             /*if (other.gameObject.tag =="PickUpKey")
             {
                 other.gameObject.SetActive(false);
                 keyinv.SetActive(true);
             }*/
-            
-           /* if(other.gameObject.tag == "PickUpMap")
-            {
-                other.gameObject.SetActive(false);
-                mapinv.SetActive(true);
-            }*/
 
-            if(other.gameObject.tag == "Spike")
+            /* if(other.gameObject.tag == "PickUpMap")
+             {
+                 other.gameObject.SetActive(false);
+                 mapinv.SetActive(true);
+             }*/
+
+            if (other.gameObject.tag == "Spike")
             {
                 TakeDamage(10);
                 Debug.Log(currentHealth);
             }
 
-            if(other.gameObject.tag == "Enemy")
+            if (other.gameObject.tag == "Enemy")
             {
                 TakeDamage(10);
             }
@@ -274,9 +280,10 @@ namespace Platformer.Mechanics
 
         void TakeDamage(int dmg)
         {
+            ScreenShake.instance.StartShake(0.2f, 0.1f);
             currentHealth -= dmg;
             healthbar.SetHealth(currentHealth);
-          //  red_screen.SetActive(true);
+            //  red_screen.SetActive(true);
             if (currentHealth <= 0)
             {
                 Death();
@@ -289,11 +296,11 @@ namespace Platformer.Mechanics
             Time.timeScale = 0f; //pauses time
         }
 
-        void ScreenShake()
+        void ScreenShaking()
         {
             RaycastHit2D rayHit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity);
 
-            if(rayHit.collider != null)
+            if (rayHit.collider != null)
             {
                 if (shakeCam)
                 {
@@ -311,5 +318,6 @@ namespace Platformer.Mechanics
         {
             dmgob.GetComponent<ControlShake>().ShakeMe();
         }
+
     }
 }
