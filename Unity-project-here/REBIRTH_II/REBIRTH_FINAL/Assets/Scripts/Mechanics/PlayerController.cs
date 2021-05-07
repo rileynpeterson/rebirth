@@ -131,6 +131,7 @@ namespace Platformer.Mechanics
                 {
                     animator.SetBool("running", false);
                     animator.SetTrigger("takeoff");
+                    animator.SetBool("isJumping", true);
 
                     jumpState = JumpState.PrepareToJump;
                 }
@@ -139,6 +140,7 @@ namespace Platformer.Mechanics
                 {
                     animator.SetBool("running", false);
                     animator.SetTrigger("takeoff");
+                    animator.SetBool("isJumping", true);
 
                     jumpState = JumpState.PrepareToJump;
                 }
@@ -147,7 +149,7 @@ namespace Platformer.Mechanics
                 {
 
                     stopJump = true;
-                    Schedule<PlayerStopJump>().player = this;
+                    
                 }
             }
             else
@@ -208,7 +210,7 @@ namespace Platformer.Mechanics
                 {
                     velocity.y = velocity.y * model.jumpDeceleration;
                     animator.SetBool("isJumping", false);
-                    animator.SetBool("isFalling", true);
+                    
 
                 }
 
@@ -216,6 +218,11 @@ namespace Platformer.Mechanics
             else if (velocity.y < 0)
             {
                 animator.SetBool("isFalling", true);
+
+            }
+            if (velocity.y == 0) 
+            {
+                animator.SetBool("isFalling", false);
             }
 
 
