@@ -25,10 +25,14 @@ public class GemPickUp : MonoBehaviour {
 
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "Player"){
-        GetComponent<AudioSource>().Play();
-        StartCoroutine(DestroyThis());
-        gameController.AddScore (1); }
+        if (other.gameObject.tag == "Player")
+        {
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+            GetComponent<AudioSource>().Play();
+            StartCoroutine(DestroyThis());
+            gameController.AddScore (1); 
+        }
     }
 
     IEnumerator DestroyThis(){
