@@ -9,6 +9,7 @@ TagManager:
   - PickUpKey
   - PickUpMap
   - Spike
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX

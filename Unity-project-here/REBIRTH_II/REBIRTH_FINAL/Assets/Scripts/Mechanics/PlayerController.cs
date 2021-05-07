@@ -75,8 +75,6 @@ namespace Platformer.Mechanics
 
         protected override void Start()
         {
-            //keyinv.SetActive(false);
-            // mapinv.SetActive(false);
             currentHealth = maxHealth;
             healthbar.SetMaxHealth(maxHealth);
             deathScreen.SetActive(false);
@@ -254,18 +252,6 @@ namespace Platformer.Mechanics
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            /*if (other.gameObject.tag =="PickUpKey")
-            {
-                other.gameObject.SetActive(false);
-                keyinv.SetActive(true);
-            }*/
-
-            /* if(other.gameObject.tag == "PickUpMap")
-             {
-                 other.gameObject.SetActive(false);
-                 mapinv.SetActive(true);
-             }*/
-
             if (other.gameObject.tag == "Spike")
             {
                 TakeDamage(10);
@@ -276,7 +262,22 @@ namespace Platformer.Mechanics
             {
                 TakeDamage(10);
             }
+
+            if (other.gameObject.tag == "MovingPlatform")
+            {
+                this.transform.parent = other.transform;
+            }
+
         }
+
+        void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.gameObject.tag == "MovingPlatform")
+            {
+                this.transform.parent = null;
+            }
+        }
+
 
         void TakeDamage(int dmg)
         {
