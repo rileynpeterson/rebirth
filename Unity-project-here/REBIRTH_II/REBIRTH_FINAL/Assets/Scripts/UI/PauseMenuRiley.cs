@@ -53,6 +53,7 @@ public class PauseMenuRiley : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f; //resume time
+        GameIsPaused = false;
         SceneManager.LoadScene("Menu");
     }
 

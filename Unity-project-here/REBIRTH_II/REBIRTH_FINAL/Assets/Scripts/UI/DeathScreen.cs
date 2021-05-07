@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class DeathScreen : MonoBehaviour
 {
     public GameObject deathScreen;
-    public string first_level;
+    public string currentScene;
 
     // Update is called once per frame
     void Update()
@@ -31,7 +31,7 @@ public class DeathScreen : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(first_level);
+        SceneManager.LoadScene(currentScene);
         Resume();
     }
 

@@ -12,7 +12,7 @@ public class MainMenuRiley : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("Tutorial Level Final");
+        SceneManager.LoadScene("Tutorial_Level_One");
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -22,10 +22,10 @@ public class MainMenuRiley : MonoBehaviour
         Application.Quit();
     }
 
-    public void Tutorial()
-    {
-        SceneManager.LoadScene("Tutorial Level Final");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
-    }
+    //public void Volume()
+    //{
+    //    SceneManager.LoadScene("Tutorial Level Final");
+    //    //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+    //}
 
 }
