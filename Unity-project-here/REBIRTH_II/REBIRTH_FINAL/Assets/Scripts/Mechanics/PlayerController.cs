@@ -272,16 +272,20 @@ namespace Platformer.Mechanics
 
             if (other.gameObject.tag == "MovingPlatform")
             {
-                this.transform.parent = other.transform;
-            }
+                jumpState = JumpState.Grounded;
 
+                this.transform.parent = other.transform;
+                animator.SetBool("isFalling", false);
+            }
         }
 
         void OnTriggerExit2D(Collider2D other)
         {
             if (other.gameObject.tag == "MovingPlatform")
             {
+                jump = true;
                 this.transform.parent = null;
+                animator.SetBool("isFalling", false);
             }
         }
 
