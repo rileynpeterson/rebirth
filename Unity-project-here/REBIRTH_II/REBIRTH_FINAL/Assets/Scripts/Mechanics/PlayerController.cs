@@ -22,6 +22,8 @@ namespace Platformer.Mechanics
         public int currentHealth = 100;
         public HealthBar healthbar;
 
+        private bool spiked = false;
+
         /// <summary>
         /// Max horizontal speed of the player.
         /// </summary>
@@ -261,6 +263,7 @@ namespace Platformer.Mechanics
         {
             if (other.gameObject.tag == "Spike")
             {
+                spiked = true;
                 TakeDamage(10);
                 Debug.Log(currentHealth);
             }
@@ -270,19 +273,20 @@ namespace Platformer.Mechanics
                 TakeDamage(10);
             }
 
-            if (other.gameObject.tag == "MovingPlatform")
+            /*if (other.gameObject.tag == "MovingPlatform")
             {
                 this.transform.parent = other.transform;
-            }
+            }*/
 
+        }
+
+        bool robotSpiked() {
+            return spiked;
         }
 
         void OnTriggerExit2D(Collider2D other)
         {
-            if (other.gameObject.tag == "MovingPlatform")
-            {
-                this.transform.parent = null;
-            }
+            spiked = false;
         }
 
 

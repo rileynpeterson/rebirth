@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
         int x = mylevel.getTotalgems();
         Text scoreTextB = textGameObject.GetComponent<Text>();
         scoreTextB.text = "Gems: " + score + "/" + x;
-        Debug.Log ("Gem touch!");
+        //Debug.Log ("Gem touch!");
     }
 
     public int getScore() => score;
