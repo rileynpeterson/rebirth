@@ -47,21 +47,21 @@ namespace Platformer.Mechanics
         internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
-        public GameObject keyinv;
-        public GameObject mapinv;
-
         public Bounds Bounds => collider2d.bounds;
         public int maxHealth = 100;
         public int currentHealth = 100;
 
+        private bool shakeCam;
+        private bool shakePlayer;
+
         protected override void Start()
         {
-          ////keyinv.SetActive(false);
-            //mapinv.SetActive(false);
             currentHealth = maxHealth;
             //healthBar.SetMaxHealth(maxHealth);
             healthBar.fillAmount = maxHealth;
             deathScreen.SetActive(false);
+            shakeCam = false;
+            shakePlayer = false;
 
         }
         void Awake()
@@ -99,6 +99,7 @@ namespace Platformer.Mechanics
             }
             UpdateJumpState();
             base.Update();
+            
         }
 
         void UpdateJumpState()
@@ -170,17 +171,7 @@ namespace Platformer.Mechanics
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.tag == "PickUpKey")
-            {
-                other.gameObject.SetActive(false);
-                keyinv.SetActive(true);
-            }
 
-            if (other.gameObject.tag == "PickUpMap")
-            {
-                other.gameObject.SetActive(false);
-                mapinv.SetActive(true);
-            }
             if (other.gameObject.tag == "Spike")
             {
                 TakeDamage(10);
@@ -207,6 +198,28 @@ namespace Platformer.Mechanics
         {
             deathScreen.SetActive(true);
             Time.timeScale = 0f;
+        }
+        void ScreenShaking()
+        {
+            RaycastHit2D rayHit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity);
+
+            if (rayHit.collider != null)
+            {
+                if (shakeCam)
+                {
+                    DamageObject(Camera.main.gameObject);
+                }
+
+                if (shakePlayer)
+                {
+                    DamageObject(rayHit.collider.gameObject);
+                }
+            }
+        }
+
+        private void DamageObject(GameObject dmgob)
+        {
+            dmgob.GetComponent<ControlShake>().ShakeMe();
         }
     }
 }
