@@ -42,7 +42,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ExtraScenes/Level IV.unity
     guid: 2ca6987c1c9e84a74a39a13a1fe6c318
   - enabled: 0
-    path: Assets/Scenes/Level V 2.unity
+    path: Assets/Scenes/ExtraScenes/Level V 2.unity
     guid: 35f1b65d45a90415cad14470bb9fbf8e
   - enabled: 0
     path: Assets/Scenes/ExtraScenes/Level V.unity
