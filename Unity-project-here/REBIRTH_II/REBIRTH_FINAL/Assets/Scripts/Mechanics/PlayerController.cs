@@ -188,11 +188,13 @@ namespace Platformer.Mechanics
                         Schedule<PlayerLanded>().player = this;
                         jumpState = JumpState.Landed;
                         animator.SetBool("isFalling", false);
+                     
                     }
                     break;
                 case JumpState.Landed:
                     jumpState = JumpState.Grounded;
                     animator.SetBool("isFalling", false);
+                    
                     break;
             }
         }
@@ -217,12 +219,12 @@ namespace Platformer.Mechanics
                 }
 
             }
-            else if (velocity.y < 0)
+            else if (velocity.y < -0.1)
             {
                 animator.SetBool("isFalling", true);
 
             }
-            if (velocity.y == 0) 
+            if (Mathf.Abs(velocity.y) < 0.1) 
             {
                 animator.SetBool("isFalling", false);
             }
@@ -241,6 +243,7 @@ namespace Platformer.Mechanics
             else
             {
                 animator.SetBool("running", false);
+                Debug.Log("running false");
             }
 
             animator.SetBool("grounded", IsGrounded);

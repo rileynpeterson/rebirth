@@ -11,6 +11,7 @@ TagManager:
   - Spike
   - MovingPlatform
   - Enemy
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - 
   - 
   - Player
-  - 
+  - Ground
   - 
   - 
   - 

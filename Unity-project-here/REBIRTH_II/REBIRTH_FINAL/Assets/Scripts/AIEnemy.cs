@@ -65,7 +65,8 @@ public class AIEnemy : MonoBehaviour
 
     void Patrol()
     {
-        if (mustPatrolTurn || bodyCollider.IsTouchingLayers(groundLayer))
+       
+       if (mustPatrolTurn || bodyCollider.IsTouchingLayers(groundLayer))
         {
             Flip();
         }
