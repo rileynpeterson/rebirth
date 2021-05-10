@@ -78,7 +78,7 @@ public class AIEnemy : MonoBehaviour
     {
         mustPatrol = false;
         transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
-        walkSpeed *= -1;
+    //    walkSpeed *= -1;
         mustPatrol = true;
     }
     IEnumerator Shoot()
