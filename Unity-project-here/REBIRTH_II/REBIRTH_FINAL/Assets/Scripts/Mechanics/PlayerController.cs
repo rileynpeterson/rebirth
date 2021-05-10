@@ -57,6 +57,7 @@ namespace Platformer.Mechanics
         public bool hardmode;
         private bool shakeCam;
         private bool shakePlayer;
+        private bool reversal = true;
 
 
         public float rotationMultiplier = 15f;
@@ -117,6 +118,14 @@ namespace Platformer.Mechanics
 
                   }
                 */
+                if (hardmode  && reversal)
+                {
+                    move.x = Input.GetAxis("Horizontal") * (-1);
+                }
+                if(hardmode && !reversal)
+                {
+                    move.x = Input.GetAxis("Horizontal");
+                }
                 if (!isReversed && !hardmode)
                 {
                     move.x = Input.GetAxis("Horizontal");
@@ -264,15 +273,42 @@ namespace Platformer.Mechanics
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.tag == "Spike")
+            if (other.gameObject.tag == "Spike" && !hardmode)
             {
                 spiked = true;
                 TakeDamage(10);
                 
             }
 
-            if (other.gameObject.tag == "Enemy")
+            if (other.gameObject.tag == "Enemy" && !hardmode)
             {
+                TakeDamage(10);
+            }
+            if(other.gameObject.tag == "Enemy" && hardmode)
+            {
+                if (reversal)
+                {
+                    reversal = false;
+
+                }
+                else
+                {
+                    reversal = true;
+                }
+                TakeDamage(10);
+            }
+
+            if(other.gameObject.tag == "Spike" && hardmode)
+            {
+                if (reversal)
+                {
+                    reversal = false;
+
+                }
+                else
+                {
+                    reversal = true;
+                }
                 TakeDamage(10);
             }
 
