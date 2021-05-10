@@ -243,7 +243,7 @@ namespace Platformer.Mechanics
             else
             {
                 animator.SetBool("running", false);
-                Debug.Log("running false");
+              
             }
 
             animator.SetBool("grounded", IsGrounded);
@@ -268,7 +268,7 @@ namespace Platformer.Mechanics
             {
                 spiked = true;
                 TakeDamage(10);
-                Debug.Log(currentHealth);
+                
             }
 
             if (other.gameObject.tag == "Enemy")
