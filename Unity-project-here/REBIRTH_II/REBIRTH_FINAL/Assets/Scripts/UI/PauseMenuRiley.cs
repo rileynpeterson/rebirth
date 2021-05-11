@@ -14,6 +14,10 @@ public class PauseMenuRiley : MonoBehaviour
     public string curr_level;
 
     // Update is called once per frame
+    void Start()
+    {
+        pauseMenuUI.SetActive(false);
+    }
     void Update()
     {
        
