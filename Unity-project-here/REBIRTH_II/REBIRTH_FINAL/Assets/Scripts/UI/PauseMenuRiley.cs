@@ -5,13 +5,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+using UnityEngine.Audio;
+
 public class PauseMenuRiley : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    public GameObject volumeMenuUI;
     public GameObject deathScreen;
     public static bool dead = false;
     public string curr_level;
+    public AudioMixer audioMixer;
 
     // Update is called once per frame
     void Start()
@@ -74,8 +78,19 @@ public class PauseMenuRiley : MonoBehaviour
         Resume();
     }
 
-    public void Disable()
+    public void Volume()
     {
-
+        volumeMenuUI.SetActive(true);
     }
+
+    public void SetVolume(float volume)
+    {
+        audioMixer.SetFloat("volume", volume);
+    }
+
+    public void Back()
+    {
+        volumeMenuUI.SetActive(false);
+    }
+
 }

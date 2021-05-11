@@ -4,11 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+using UnityEngine.Audio;
 
 
 public class MainMenuRiley : MonoBehaviour
 {
 
+    public AudioMixer audioMixer;
+    public GameObject volumeMenuUI;
+    public GameObject mainMenuUI;
 
     public void PlayGame()
     {
@@ -22,10 +26,21 @@ public class MainMenuRiley : MonoBehaviour
         Application.Quit();
     }
 
-    //public void Volume()
-    //{
-    //    SceneManager.LoadScene("Tutorial Level Final");
-    //    //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
-    //}
+    public void Volume()
+    {
+        volumeMenuUI.SetActive(true);
+        mainMenuUI.SetActive(false);
+    }
+
+    public void SetVolume(float volume)
+    {
+        audioMixer.SetFloat("volume", volume);
+    }
+
+    public void Back()
+    {
+        volumeMenuUI.SetActive(false);
+        mainMenuUI.SetActive(true);
+    }
 
 }
